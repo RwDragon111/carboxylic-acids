@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 230" width="330" height="230" fill="none">
+  <defs>
+    <style>
+      .atom { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 20px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .atom-sub { font-size: 14px; font-weight: 500; }
+      .atom-sup { font-size: 13px; font-weight: bold; fill: #dc2626; }
+      .bond { stroke: #0f172a; stroke-width: 2.5px; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <!-- Benzene ring hexagon -->
+  <path d="M 129.0 115.0 L 107.0 153.1 L 63.0 153.1 L 41.0 115.0 L 63.0 76.9 L 107.0 76.9 Z" class="bond" fill="none" />
+  <!-- Inner double bonds: 0-1, 2-3, 4-5 -->
+  <line x1="122.0" y1="115.0" x2="103.5" y2="147.0" class="bond" />
+  <line x1="66.5" y1="147.0" x2="48.0" y2="115.0" class="bond" />
+  <line x1="66.5" y1="83.0" x2="103.5" y2="83.0" class="bond" />
+  
+  <!-- Position 1: -COO⁻ -->
+  <text x="195" y="58" class="atom">C</text>
+  <text x="195" y="15" class="atom">O</text>
+  <text x="270" y="58" class="atom">O<tspan class="atom-sup" dy="-7">⁻</tspan></text>
+
+  <line x1="107" y1="77" x2="180" y2="60" class="bond" />
+  <line x1="190" y1="42" x2="190" y2="28" class="bond" />
+  <line x1="200" y1="42" x2="200" y2="28" class="bond" />
+  <line x1="211" y1="58" x2="252" y2="58" class="bond" />
+
+  <!-- Position 2: ortho -OH -->
+  <line x1="129" y1="115" x2="175" y2="120" class="bond" />
+  <text x="198" y="122" class="atom">OH</text>
+</svg>

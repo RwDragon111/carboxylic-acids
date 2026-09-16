@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="360" height="170" fill="none">
+  <defs>
+    <style>
+      .atom { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 20px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .atom-sub { font-size: 14px; font-weight: 500; }
+      .atom-sup { font-size: 13px; font-weight: bold; fill: #dc2626; }
+      .bond { stroke: #0f172a; stroke-width: 2.5px; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <text x="55" y="115" class="atom">CH<tspan class="atom-sub" dy="5">3</tspan></text>
+  <text x="145" y="115" class="atom">CH</text>
+  <text x="145" y="40" class="atom">OH</text>
+  <text x="235" y="115" class="atom">C</text>
+  <text x="235" y="40" class="atom">O</text>
+  <text x="310" y="115" class="atom">O<tspan class="atom-sup" dy="-7">⁻</tspan></text>
+
+  <line x1="88" y1="115" x2="126" y2="115" class="bond" />
+  <line x1="145" y1="98" x2="145" y2="57" class="bond" />
+  <line x1="166" y1="115" x2="219" y2="115" class="bond" />
+  <line x1="230" y1="98" x2="230" y2="57" class="bond" />
+  <line x1="240" y1="98" x2="240" y2="57" class="bond" />
+  <line x1="251" y1="115" x2="292" y2="115" class="bond" />
+</svg>
