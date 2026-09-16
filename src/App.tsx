@@ -168,7 +168,7 @@ export const App: React.FC = () => {
       {/* Footer */}
       <footer className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-xs text-zinc-400 bg-white/50 dark:bg-zinc-950/50">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>Карбоновые кислоты — Обучающий тренажёр (100% Offline)</span>
+          <span>Карбоновые кислоты — Обучающий тренажёр</span>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setActiveTab('gallery')}

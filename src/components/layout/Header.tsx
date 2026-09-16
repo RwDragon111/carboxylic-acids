@@ -1,5 +1,5 @@
-import React from 'react';
-import { Volume2, VolumeX, Moon, Sun, RotateCcw, HelpCircle, Flame, Target } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Volume2, VolumeX, Moon, Sun, RotateCcw, HelpCircle, Flame, Target, Maximize, Minimize } from 'lucide-react';
 import { UserStatistics, UserSettings } from '../../types/chemistry';
 import { getAccuracyPercent } from '../../utils/mastery';
 
@@ -22,7 +22,31 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenResetConfirm,
   onNavigateHome,
 }) => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const accuracy = getAccuracyPercent(statistics.correctAnswers, statistics.totalAnswers);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        }
+      }
+    } catch (err) {
+      console.warn('Fullscreen error:', err);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md transition-colors">
@@ -88,6 +112,20 @@ export const Header: React.FC<HeaderProps> = ({
               <Sun className="w-4 h-4 text-amber-400" />
             ) : (
               <Moon className="w-4 h-4 text-zinc-600" />
+            )}
+          </button>
+
+          {/* Fullscreen Toggle */}
+          <button
+            onClick={toggleFullscreen}
+            className="p-2 rounded-lg text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            title={isFullscreen ? 'Выйти из полноэкранного режима' : 'Полноэкранный режим'}
+            aria-label={isFullscreen ? 'Выйти из полноэкранного режима' : 'Полноэкранный режим'}
+          >
+            {isFullscreen ? (
+              <Minimize className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <Maximize className="w-4 h-4" />
             )}
           </button>
 

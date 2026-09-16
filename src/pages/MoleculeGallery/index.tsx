@@ -31,7 +31,7 @@ export const MoleculeGallery: React.FC = () => {
           </h3>
           <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
             <CheckCircle className="w-3.5 h-3.5" />
-            Все структуры локальны (100% Offline)
+            Все структуры локальны
           </span>
         </div>
 
