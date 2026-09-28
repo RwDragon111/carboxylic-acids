@@ -38,6 +38,14 @@ export const Home: React.FC<HomeProps> = ({ state, onSelectTab, mistakesCount })
 
   const modes = [
     {
+      id: 'k2' as PageTab,
+      title: 'Подготовка к зачёту К2',
+      description: 'Комплексный зачёт: 12 тем (§44–49 Карцова и Лёвкин), 180 разноплановых заданий, пробный зачёт из 30 вопросов и банк ошибок.',
+      icon: <GraduationCap className="w-6 h-6 text-amber-500" />,
+      badge: 'Новый модуль 🔥',
+      highlight: true,
+    },
+    {
       id: 'learn' as PageTab,
       title: 'Обучение',
       description: 'Изучай кислоты по одной: структуры, формулы, систематические названия и анионы.',
@@ -129,6 +137,39 @@ export const Home: React.FC<HomeProps> = ({ state, onSelectTab, mistakesCount })
         <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
           Выучи названия, структуры и анионы
         </p>
+      </div>
+
+      {/* Featured K2 Exam Prep Banner */}
+      <div className="bg-gradient-to-r from-amber-500/10 via-indigo-500/10 to-emerald-500/10 border-2 border-amber-500/30 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-start gap-3.5">
+          <div className="p-3 rounded-2xl bg-amber-500 text-white shadow-md shadow-amber-500/20 shrink-0">
+            <GraduationCap className="w-7 h-7" />
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                Новый учебный модуль
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold">
+                180 заданий
+              </span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">
+              Подготовка к зачёту «К2: Кислоты, эфиры и жиры»
+            </h3>
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 max-w-xl">
+              12 уроков по Карцовой и Лёвкину (§44–49), интерактивные схемы этерификации и жиров, экспресс-шпаргалка за 10 минут и пробный зачёт из 30 вопросов.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => onSelectTab('k2')}
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm rounded-2xl shadow-lg shadow-amber-500/20 transition-all shrink-0 hover:scale-[1.02]"
+        >
+          <span>Перейти к модулю К2</span>
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Main KPI Stats Bento Grid */}

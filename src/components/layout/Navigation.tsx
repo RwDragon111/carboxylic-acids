@@ -14,6 +14,7 @@ import {
 
 export type PageTab =
   | 'home'
+  | 'k2'
   | 'learn'
   | 'quiz'
   | 'flashcards'
@@ -35,8 +36,15 @@ export const Navigation: React.FC<NavigationProps> = ({
   onSelectTab,
   mistakesCount,
 }) => {
-  const tabs: { id: PageTab; label: string; icon: React.ReactNode; badge?: number }[] = [
+  const tabs: { id: PageTab; label: string; icon: React.ReactNode; badge?: string | number; isSpecial?: boolean }[] = [
     { id: 'home', label: 'Главная', icon: <Home className="w-4 h-4" /> },
+    {
+      id: 'k2',
+      label: 'Зачёт К2',
+      icon: <GraduationCap className="w-4 h-4 text-amber-500" />,
+      badge: 'Новое 🔥',
+      isSpecial: true,
+    },
     { id: 'learn', label: 'Обучение', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'quiz', label: 'Квиз', icon: <HelpCircle className="w-4 h-4" /> },
     { id: 'flashcards', label: 'Карточки', icon: <Layers className="w-4 h-4" /> },
@@ -72,10 +80,12 @@ export const Navigation: React.FC<NavigationProps> = ({
               <span>{tab.label}</span>
               {tab.badge !== undefined && (
                 <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold ${
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-sans font-bold ${
                     isActive
                       ? 'bg-white text-emerald-600'
-                      : 'bg-red-500 text-white'
+                      : tab.isSpecial
+                      ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30'
+                      : 'bg-red-500 text-white font-mono'
                   }`}
                 >
                   {tab.badge}

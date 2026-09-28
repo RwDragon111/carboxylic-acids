@@ -16,6 +16,7 @@ import { Matching } from './pages/Matching';
 import { Mistakes } from './pages/Mistakes';
 import { Exam } from './pages/Exam';
 import { MoleculeGallery } from './pages/MoleculeGallery';
+import { K2Module } from './pages/K2';
 
 export const App: React.FC = () => {
   const {
@@ -40,6 +41,8 @@ export const App: React.FC = () => {
 
       if (hash === 'gallery' || path.includes('molecule-gallery') || path.includes('gallery')) {
         setActiveTab('gallery');
+      } else if (hash === 'k2' || path.includes('k2')) {
+        setActiveTab('k2');
       } else if (hash === 'learn') {
         setActiveTab('learn');
       } else if (hash === 'quiz') {
@@ -102,6 +105,10 @@ export const App: React.FC = () => {
             onSelectTab={setActiveTab}
             mistakesCount={mistakesCount}
           />
+        )}
+
+        {activeTab === 'k2' && (
+          <K2Module soundEnabled={state.settings.soundEnabled} />
         )}
 
         {activeTab === 'learn' && (
