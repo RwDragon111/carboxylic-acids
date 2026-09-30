@@ -64,8 +64,8 @@ export const K2_CHEAT_SHEET: CheatSheetSection[] = [
     points: [
       {
         heading: 'Сравнение кислотных свойств (слева направо убывают)',
-        text: 'Сильные минеральные кислоты > Муравьиная > Хлоруксусная > Уксусная > Пропионовая > Угольная (H2CO3) > Фенол > Вода > Спирты (C2H5OH)',
-        formula: 'HCl > HCOOH > CH2ClCOOH > CH3COOH > C2H5OH > H2CO3 > C6H5OH > H2O > ROH',
+        text: 'Сильные минеральные кислоты (HCl) > Хлоруксусная (CH2ClCOOH) > Муравьиная (HCOOH) > Уксусная (CH3COOH) > Пропионовая (C2H5COOH) > Угольная (H2CO3) > Фенол (C6H5OH) > Вода (H2O) > Спирты (C2H5OH)',
+        formula: 'HCl > CH2ClCOOH > HCOOH > CH3COOH > C2H5COOH > H2CO3 > C6H5OH > H2O > ROH',
         warning: 'Карбоновые кислоты вытесняют CO2 из солей угольной кислоты (NaHCO3, CaCO3), а фенол — не может!',
       },
       {

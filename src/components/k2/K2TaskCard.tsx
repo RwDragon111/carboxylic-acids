@@ -8,14 +8,12 @@ import {
   checkSorting,
 } from '../../utils/answerChecker';
 import { playSuccessSound, playErrorSound } from '../../utils/audio';
+import { ChemText, formatChemicalText } from '../common/ChemText';
 import {
   CheckCircle2,
   XCircle,
-  HelpCircle,
   AlertTriangle,
   Bookmark,
-  Sparkles,
-  ArrowUpDown,
   BookOpen,
   ArrowRight,
 } from 'lucide-react';
@@ -232,16 +230,16 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
       {/* Prompt and Formula */}
       <div className="space-y-2">
         <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
-          {question.prompt}
+          <ChemText text={question.prompt} inline />
         </h3>
         {question.subPrompt && (
-          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-            {question.subPrompt}
-          </p>
+          <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            <ChemText text={question.subPrompt} inline />
+          </div>
         )}
         {question.formulaDisplay && (
           <div className="p-3 bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800 rounded-xl font-mono text-center font-bold text-base text-zinc-800 dark:text-zinc-200 my-2">
-            {question.formulaDisplay}
+            <ChemText text={question.formulaDisplay} inline />
           </div>
         )}
       </div>
@@ -295,7 +293,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
                       <span className="w-6 h-6 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-500 flex items-center justify-center font-mono text-xs font-bold shrink-0 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700">
                         {String.fromCharCode(65 + idx)}
                       </span>
-                      <span className="leading-snug">{opt}</span>
+                      <span className="leading-snug"><ChemText text={opt} inline /></span>
                     </div>
 
                     {showReview && isCorrect && (
@@ -358,7 +356,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
                       >
                         {isChecked && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </div>
-                      <span>{opt}</span>
+                      <span><ChemText text={opt} inline /></span>
                     </div>
 
                     {showReview && isTarget && (
@@ -510,7 +508,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
                     className="p-3 bg-zinc-50 dark:bg-zinc-950/60 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs sm:text-sm"
                   >
                     <span className="font-semibold text-zinc-900 dark:text-zinc-100 flex-1">
-                      {pair.left}
+                      <ChemText text={pair.left} inline />
                     </span>
 
                     <div className="flex items-center gap-2">
@@ -535,7 +533,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
                         <option value="">-- Выберите соответствие --</option>
                         {shuffledRights.map(r => (
                           <option key={r.id} value={r.id}>
-                            {r.text}
+                            {formatChemicalText(r.text)}
                           </option>
                         ))}
                       </select>
@@ -584,7 +582,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
                     <span className="w-6 h-6 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 flex items-center justify-center font-bold text-xs">
                       {idx + 1}
                     </span>
-                    <span>{item.label}</span>
+                    <span><ChemText text={item.label} inline /></span>
                   </div>
 
                   {(!showReview || isExamMode) && (
@@ -651,7 +649,9 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
               <BookOpen className="w-4 h-4 text-indigo-500" />
               <span>Химическое обоснование:</span>
             </div>
-            <p className="leading-relaxed whitespace-pre-line">{question.explanation}</p>
+            <div className="leading-relaxed">
+              <ChemText text={question.explanation} />
+            </div>
           </div>
 
           {/* Typical Mistake Warning */}
@@ -660,7 +660,7 @@ export const K2TaskCard: React.FC<K2TaskCardProps> = ({
               <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold block mb-0.5">Типичная ловушка школьного зачёта:</span>
-                <span>{question.typicalMistake}</span>
+                <ChemText text={question.typicalMistake} inline />
               </div>
             </div>
           )}

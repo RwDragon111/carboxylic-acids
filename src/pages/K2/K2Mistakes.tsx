@@ -3,6 +3,7 @@ import { K2TopicId, K2StorageState, K2Question } from '../../types/k2';
 import { K2_TOPICS } from '../../data/k2/topics';
 import { K2_QUESTIONS } from '../../data/k2/questions';
 import { K2TaskCard } from '../../components/k2/K2TaskCard';
+import { ChemText } from '../../components/common/ChemText';
 import {
   AlertTriangle,
   CheckCircle2,
@@ -185,12 +186,12 @@ export const K2Mistakes: React.FC<K2MistakesProps> = ({
                     </div>
 
                     <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">
-                      {q.prompt}
+                      <ChemText text={q.prompt} inline />
                     </h4>
 
                     {q.typicalMistake && (
                       <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-900 dark:text-amber-200">
-                        <strong>Ловушка:</strong> {q.typicalMistake}
+                        <strong>Ловушка:</strong> <ChemText text={q.typicalMistake} inline />
                       </div>
                     )}
 

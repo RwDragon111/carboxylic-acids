@@ -5,6 +5,7 @@ import {
   COMPARISON_TABLE_ACIDS_VS_ESTERS,
   FATTY_ACIDS_TABLE,
 } from '../../data/k2/quickReview';
+import { ChemText } from '../common/ChemText';
 import {
   X,
   Zap,
@@ -137,15 +138,17 @@ export const QuickReviewModal: React.FC<QuickReviewModalProps> = ({ isOpen, onCl
                         <span className="font-bold text-zinc-900 dark:text-zinc-100 block">
                           {pt.heading}
                         </span>
-                        <p className="leading-relaxed">{pt.text}</p>
+                        <div className="leading-relaxed">
+                          <ChemText text={pt.text} inline />
+                        </div>
                         {pt.formula && (
                           <div className="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 p-2 rounded-lg border border-emerald-500/20 text-xs mt-1">
-                            {pt.formula}
+                            <ChemText text={pt.formula} inline />
                           </div>
                         )}
                         {pt.warning && (
                           <div className="font-semibold text-rose-600 dark:text-rose-400 bg-rose-500/10 p-2 rounded-lg text-[11px] mt-1">
-                            ⚠️ {pt.warning}
+                            ⚠️ <ChemText text={pt.warning} inline />
                           </div>
                         )}
                       </div>
@@ -169,19 +172,19 @@ export const QuickReviewModal: React.FC<QuickReviewModalProps> = ({ isOpen, onCl
                       {trap.id}
                     </span>
                     <h4 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">
-                      {trap.title}
+                      <ChemText text={trap.title} inline />
                     </h4>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                     <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-900 dark:text-rose-200">
                       <span className="font-bold block mb-1">❌ Как часто ошибаются:</span>
-                      <p>{trap.misconception}</p>
+                      <p><ChemText text={trap.misconception} inline /></p>
                     </div>
 
                     <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-200">
                       <span className="font-bold block mb-1">✅ Как на самом деле (правда):</span>
-                      <p>{trap.truth}</p>
+                      <p><ChemText text={trap.truth} inline /></p>
                     </div>
                   </div>
 
@@ -189,9 +192,11 @@ export const QuickReviewModal: React.FC<QuickReviewModalProps> = ({ isOpen, onCl
                     <span className="font-semibold text-zinc-800 dark:text-zinc-200 block">
                       Химическое обоснование:
                     </span>
-                    <p className="leading-relaxed">{trap.chemicalReason}</p>
+                    <div className="leading-relaxed">
+                      <ChemText text={trap.chemicalReason} inline />
+                    </div>
                     <div className="font-mono text-emerald-600 dark:text-emerald-400 font-bold mt-1 text-[11px]">
-                      Пример: {trap.example}
+                      Пример: <ChemText text={trap.example} inline />
                     </div>
                   </div>
                 </div>
@@ -223,9 +228,9 @@ export const QuickReviewModal: React.FC<QuickReviewModalProps> = ({ isOpen, onCl
                           <td className="p-3 font-semibold text-zinc-900 dark:text-zinc-100">
                             {row.parameter}
                           </td>
-                          <td className="p-3 text-zinc-700 dark:text-zinc-300">{row.acids}</td>
-                          <td className="p-3 text-zinc-700 dark:text-zinc-300">{row.esters}</td>
-                          <td className="p-3 text-zinc-700 dark:text-zinc-300">{row.alcohols}</td>
+                          <td className="p-3 text-zinc-700 dark:text-zinc-300"><ChemText text={row.acids} inline /></td>
+                          <td className="p-3 text-zinc-700 dark:text-zinc-300"><ChemText text={row.esters} inline /></td>
+                          <td className="p-3 text-zinc-700 dark:text-zinc-300"><ChemText text={row.alcohols} inline /></td>
                         </tr>
                       ))}
                     </tbody>
@@ -257,12 +262,12 @@ export const QuickReviewModal: React.FC<QuickReviewModalProps> = ({ isOpen, onCl
                             {row.trivialName}
                           </td>
                           <td className="p-3 font-mono text-emerald-600 font-bold">
-                            {row.formula}
+                            <ChemText text={row.formula} inline />
                           </td>
                           <td className="p-3 font-bold">{row.doubleBonds}</td>
                           <td className="p-3 text-zinc-600 dark:text-zinc-400">{row.cisTrans}</td>
                           <td className="p-3 font-semibold">{row.stateAt20}</td>
-                          <td className="p-3 text-zinc-500">{row.mnemonic}</td>
+                          <td className="p-3 text-zinc-500"><ChemText text={row.mnemonic} inline /></td>
                         </tr>
                       ))}
                     </tbody>

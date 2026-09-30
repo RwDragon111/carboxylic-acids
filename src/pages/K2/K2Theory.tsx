@@ -3,6 +3,7 @@ import { K2TopicId, K2StorageState } from '../../types/k2';
 import { K2_TOPICS, K2_LESSONS } from '../../data/k2/topics';
 import { EsterificationDiagram } from '../../components/k2/EsterificationDiagram';
 import { TriglycerideDiagram } from '../../components/k2/TriglycerideDiagram';
+import { ChemText } from '../../components/common/ChemText';
 import {
   BookOpen,
   CheckCircle2,
@@ -145,9 +146,9 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                   <span className="font-bold text-amber-900 dark:text-amber-200 block">
                     Суть за 1 минуту:
                   </span>
-                  <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                    {currentLesson.cheatSheetSummary}
-                  </p>
+                  <div className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                    <ChemText text={currentLesson.cheatSheetSummary} inline />
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,8 +176,8 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                     <span>{section.title}</span>
                   </h2>
 
-                  <div className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-line">
-                    {section.content}
+                  <div className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                    <ChemText text={section.content} />
                   </div>
 
                   {section.structuralScheme && (
@@ -190,7 +191,7 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                       <AlertTriangle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
                       <div>
                         <span className="font-bold block mb-0.5">Ловушка:</span>
-                        <span>{section.trapWarning}</span>
+                        <ChemText text={section.trapWarning} inline />
                       </div>
                     </div>
                   )}
@@ -201,11 +202,11 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                         <Lightbulb className="w-4 h-4" />
                         <span>Пример с решением: {section.exampleBox.title}</span>
                       </div>
-                      <p className="text-zinc-600 dark:text-zinc-400">
-                        {section.exampleBox.description}
-                      </p>
+                      <div className="text-zinc-600 dark:text-zinc-400">
+                        <ChemText text={section.exampleBox.description} inline />
+                      </div>
                       <div className="p-2.5 bg-white dark:bg-zinc-900 rounded-lg border border-emerald-500/20 font-mono text-emerald-700 dark:text-emerald-300 font-semibold">
-                        {section.exampleBox.solution}
+                        <ChemText text={section.exampleBox.solution} inline />
                       </div>
                     </div>
                   )}
@@ -234,9 +235,9 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                         key={cIdx}
                         className="bg-zinc-50 dark:bg-zinc-950/60 p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 space-y-3"
                       >
-                        <p className="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100">
-                          {cIdx + 1}. {cp.question}
-                        </p>
+                        <div className="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100">
+                          {cIdx + 1}. <ChemText text={cp.question} inline />
+                        </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {cp.options.map((opt, oIdx) => {
@@ -265,15 +266,16 @@ export const K2Theory: React.FC<K2TheoryProps> = ({
                                 }
                                 className={`text-left p-2.5 rounded-xl border text-xs transition-all ${btnStyle}`}
                               >
-                                {opt}
+                                <ChemText text={opt} inline />
                               </button>
                             );
                           })}
                         </div>
 
                         {isAnswered && (
-                          <div className="text-xs text-zinc-500 pt-1 border-t border-zinc-200 dark:border-zinc-800">
-                            {isCorrect ? '✅ Верно!' : '❌ Неверно.'} {cp.explanation}
+                          <div className="text-xs text-zinc-600 dark:text-zinc-400 pt-1 border-t border-zinc-200 dark:border-zinc-800">
+                            <span className="font-bold mr-1">{isCorrect ? '✅ Верно!' : '❌ Неверно.'}</span>
+                            <ChemText text={cp.explanation} inline />
                           </div>
                         )}
                       </div>
