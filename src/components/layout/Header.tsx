@@ -60,10 +60,10 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold shadow-sm group-hover:bg-emerald-500 transition-colors">
             –COOH
           </div>
-          <div>
-            <h1 className="text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-none">
+          <div className="hidden sm:block">
+            <p className="text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-none">
               Карбоновые кислоты
-            </h1>
+            </p>
             <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
               Тренажёр и справочник
             </span>
@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
             <Target className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Точность: {accuracy}%</span>
+            <span>Кислоты: {accuracy}%</span>
           </div>
         </div>
 
@@ -143,8 +143,8 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenResetConfirm}
             className="p-2 rounded-lg text-zinc-500 hover:text-red-600 dark:text-zinc-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-            title="Сбросить прогресс"
-            aria-label="Сбросить прогресс"
+            title="Сбросить прогресс кислот"
+            aria-label="Сбросить прогресс кислот"
           >
             <RotateCcw className="w-4 h-4" />
           </button>

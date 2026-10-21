@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { useProgress } from './hooks/useProgress';
 import { Header } from './components/layout/Header';
 import { Navigation, PageTab } from './components/layout/Navigation';
@@ -17,6 +17,7 @@ import { Mistakes } from './pages/Mistakes';
 import { Exam } from './pages/Exam';
 import { MoleculeGallery } from './pages/MoleculeGallery';
 import { K2Module } from './pages/K2';
+const Carbohydrates = lazy(() => import('./pages/Carbohydrates'));
 
 export const App: React.FC = () => {
   const {
@@ -39,7 +40,13 @@ export const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
       const path = window.location.pathname.toLowerCase();
 
-      if (hash === 'gallery' || path.includes('molecule-gallery') || path.includes('gallery')) {
+      if (hash === 'carbohydrates') {
+        setActiveTab('carbohydrates');
+      } else if (hash === 'home' || (hash === '' && !path.includes('gallery') && !path.includes('k2'))) {
+        setActiveTab('home');
+      } else if (hash === 'matching') {
+        setActiveTab('matching');
+      } else if (hash === 'gallery' || path.includes('molecule-gallery') || path.includes('gallery')) {
         setActiveTab('gallery');
       } else if (hash === 'k2' || path.includes('k2')) {
         setActiveTab('k2');
@@ -65,6 +72,11 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleLocationChange);
   }, []);
 
+  const navigate = (tab: PageTab) => {
+    setActiveTab(tab);
+    window.location.hash = tab;
+  };
+
   // First time launch: show tutorial if not completed
   useEffect(() => {
     if (!state.settings.tutorialCompleted) {
@@ -87,13 +99,13 @@ export const App: React.FC = () => {
         onToggleTheme={toggleTheme}
         onOpenTutorial={() => setIsTutorialOpen(true)}
         onOpenResetConfirm={() => setIsResetConfirmOpen(true)}
-        onNavigateHome={() => setActiveTab('home')}
+        onNavigateHome={() => navigate('home')}
       />
 
       {/* Navigation Bar */}
       <Navigation
         activeTab={activeTab}
-        onSelectTab={setActiveTab}
+        onSelectTab={navigate}
         mistakesCount={mistakesCount}
       />
 
@@ -102,10 +114,12 @@ export const App: React.FC = () => {
         {activeTab === 'home' && (
           <Home
             state={state}
-            onSelectTab={setActiveTab}
+            onSelectTab={navigate}
             mistakesCount={mistakesCount}
           />
         )}
+
+        {activeTab === 'carbohydrates' && <Suspense fallback={<p role="status" className="max-w-6xl mx-auto p-6">Загрузка раздела «Углеводы»…</p>}><Carbohydrates /></Suspense>}
 
         {activeTab === 'k2' && (
           <K2Module soundEnabled={state.settings.soundEnabled} />

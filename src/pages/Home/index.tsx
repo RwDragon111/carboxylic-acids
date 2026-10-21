@@ -38,6 +38,14 @@ export const Home: React.FC<HomeProps> = ({ state, onSelectTab, mistakesCount })
 
   const modes = [
     {
+      id: 'carbohydrates' as PageTab,
+      title: 'Углеводы: полный курс к зачёту',
+      description: 'Все пункты чек-листа по §§50–53 Карцовой и Лёвкина: 10 подробных уроков, схемы строения, 100 заданий с разбором, карточки и пробный зачёт.',
+      icon: <BookOpen className="w-6 h-6 text-emerald-600" />,
+      badge: 'Новая тема',
+      highlight: true,
+    },
+    {
       id: 'k2' as PageTab,
       title: 'Подготовка к зачёту К2',
       description: 'Комплексный зачёт: 12 тем (§44–49 Карцова и Лёвкин), 180 разноплановых заданий, пробный зачёт из 30 вопросов и банк ошибок.',

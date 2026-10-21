@@ -15,6 +15,7 @@ import {
 export type PageTab =
   | 'home'
   | 'k2'
+  | 'carbohydrates'
   | 'learn'
   | 'quiz'
   | 'flashcards'
@@ -38,6 +39,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const tabs: { id: PageTab; label: string; icon: React.ReactNode; badge?: string | number; isSpecial?: boolean }[] = [
     { id: 'home', label: 'Главная', icon: <Home className="w-4 h-4" /> },
+    { id: 'carbohydrates', label: 'Углеводы', icon: <BookOpen className="w-4 h-4" /> },
     {
       id: 'k2',
       label: 'Зачёт К2',

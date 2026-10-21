@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .carb-panel { @apply min-w-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl; }
+  .carb-button { @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 min-h-11 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm font-semibold text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .carb-answer { @apply block w-full text-left border border-zinc-300 dark:border-zinc-700 rounded-xl p-4 text-sm sm:text-base hover:border-emerald-600 disabled:cursor-default; }
+  .carb-selected { @apply bg-emerald-700 dark:bg-emerald-700 text-white dark:text-white border-emerald-700 dark:border-emerald-600 hover:bg-emerald-800 dark:hover:bg-emerald-800; }
+  .carb-input { @apply min-h-11 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-white dark:bg-zinc-900 p-3 text-sm; }
+}
+
+.carbohydrates :is(button, input, select, summary):focus-visible { outline: 3px solid #059669; outline-offset: 3px; }
+.carbohydrates table { min-width: 30rem; }
+.carbohydrates table th { white-space: normal; }
+@media (prefers-reduced-motion: reduce) { .carbohydrates * { transition: none !important; } }
+
 @layer base {
   body {
     @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-200 antialiased selection:bg-emerald-500 selection:text-white min-h-screen;
